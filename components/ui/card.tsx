@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { type ReactNode } from "react";
 import { ArrowUpRight, Clock3, FileText, Layers, Signal } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { cn } from "@/lib/cn";
@@ -9,6 +10,7 @@ type CourseCardProps = {
   level: string;
   duration: string;
   modules: string;
+  icon?: ReactNode;
   iconSrc?: string;
   iconAlt?: string;
   iconFallback?: string;
@@ -21,6 +23,7 @@ export function CourseCard({
   level,
   duration,
   modules,
+  icon,
   iconSrc,
   iconAlt = "",
   iconFallback = "N",
@@ -33,8 +36,15 @@ export function CourseCard({
         className,
       )}
     >
-      <div className="flex size-12 items-center justify-center overflow-hidden rounded-md bg-neutral-900 text-body-lg font-bold text-white">
-        {iconSrc ? (
+      <div
+        className={cn(
+          "flex size-12 items-center justify-center overflow-hidden rounded-md text-body-lg font-bold text-white",
+          !icon && !iconSrc ? "bg-neutral-900" : "bg-transparent",
+        )}
+      >
+        {icon ? (
+          icon
+        ) : iconSrc ? (
           <Image src={iconSrc} alt={iconAlt} width={48} height={48} />
         ) : (
           iconFallback
