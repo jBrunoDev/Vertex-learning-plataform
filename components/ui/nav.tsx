@@ -22,30 +22,33 @@ const defaultLinks: NavLink[] = [
 
 export function Nav({
   links = defaultLinks,
-  activeHref = "/courses",
+  activeHref,
   showActions = true,
   className,
 }: NavProps) {
   return (
     <header
       className={cn(
-        "flex w-full items-center justify-between gap-6 border-b border-neutral-200 bg-white/80 px-6 py-4 backdrop-blur",
+        "flex w-full items-center justify-between gap-4 border-b border-neutral-200 bg-white/80 px-6 py-4 backdrop-blur sm:gap-6",
         className,
       )}
     >
-      <div className="flex items-center gap-8">
+      <div className="flex min-w-0 items-center gap-4 sm:gap-8">
         <Link href="/" className="shrink-0">
           <VertexLogo />
         </Link>
-        <nav aria-label="Primary" className="flex items-center gap-5">
+        <nav
+          aria-label="Primary"
+          className="flex items-center gap-3 sm:gap-5"
+        >
           {links.map((link) => {
-            const active = link.href === activeHref;
+            const active = Boolean(activeHref) && link.href === activeHref;
             return (
               <Link
                 key={link.href}
                 href={link.href}
                 className={cn(
-                  "text-body font-medium transition-colors",
+                  "whitespace-nowrap text-body font-medium transition-colors",
                   active
                     ? "text-primary-500"
                     : "text-neutral-500 hover:text-neutral-900",
@@ -70,9 +73,19 @@ export function Nav({
             className="size-9 overflow-hidden rounded-full bg-neutral-200 ring-2 ring-white"
             aria-hidden
           >
-            <span className="flex size-full items-center justify-center text-small font-medium text-neutral-700">
-              VR
-            </span>
+            {/* Soft portrait placeholder matching the home mock avatar chip */}
+            <svg viewBox="0 0 36 36" className="size-full" xmlns="http://www.w3.org/2000/svg">
+              <rect width="36" height="36" fill="#E8D5C4" />
+              <circle cx="18" cy="14" r="7" fill="#C4A484" />
+              <path
+                d="M6 34c1.5-8 6.5-12 12-12s10.5 4 12 12"
+                fill="#C4A484"
+              />
+              <path
+                d="M10 12c1-5 4-7 8-7s7 2 8 7c-2-1-5-1.5-8-1.5S12 11 10 12Z"
+                fill="#3F2A1D"
+              />
+            </svg>
           </span>
         </div>
       ) : null}
