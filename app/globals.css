@@ -1,26 +1,103 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #fafafc;
+  --foreground: #0f172a;
+
+  --primary-500: #f97316;
+  --primary-400: #fb923c;
+  --primary-300: #fdba74;
+  --primary-200: #fed7aa;
+  --primary-100: #ffedd5;
+
+  --neutral-900: #0f172a;
+  --neutral-700: #334155;
+  --neutral-500: #64748b;
+  --neutral-300: #cbd5e1;
+  --neutral-200: #e2e8f0;
+  --neutral-100: #f1f5f9;
+  --neutral-50: #fafafc;
+  --neutral-white: #ffffff;
+
+  --status-completed: #22c55e;
+  --status-completed-bg: #dcfce7;
+  --status-in-progress: #f97316;
+  --status-in-progress-bg: #ffedd5;
+  --status-locked: #94a3b8;
+  --status-locked-bg: #f1f5f9;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  --color-primary-500: var(--primary-500);
+  --color-primary-400: var(--primary-400);
+  --color-primary-300: var(--primary-300);
+  --color-primary-200: var(--primary-200);
+  --color-primary-100: var(--primary-100);
+
+  --color-neutral-900: var(--neutral-900);
+  --color-neutral-700: var(--neutral-700);
+  --color-neutral-500: var(--neutral-500);
+  --color-neutral-300: var(--neutral-300);
+  --color-neutral-200: var(--neutral-200);
+  --color-neutral-100: var(--neutral-100);
+  --color-neutral-50: var(--neutral-50);
+  --color-neutral-white: var(--neutral-white);
+
+  --color-status-completed: var(--status-completed);
+  --color-status-completed-bg: var(--status-completed-bg);
+  --color-status-in-progress: var(--status-in-progress);
+  --color-status-in-progress-bg: var(--status-in-progress-bg);
+  --color-status-locked: var(--status-locked);
+  --color-status-locked-bg: var(--status-locked-bg);
+
+  --font-sans: var(--font-inter);
+  --font-display: var(--font-playfair);
+
+  --radius-xs: 4px;
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --radius-xl: 24px;
+  --radius-full: 9999px;
+
+  --shadow-sm: 0 1px 2px 0 rgb(15 23 42 / 0.05);
+  --shadow-md: 0 4px 12px -2px rgb(15 23 42 / 0.08);
+  --shadow-lg: 0 12px 24px -4px rgb(15 23 42 / 0.1);
+  --shadow-xl: 0 20px 40px -8px rgb(15 23 42 / 0.12);
+
+  --spacing-1: 4px;
+  --spacing-2: 8px;
+  --spacing-3: 12px;
+  --spacing-4: 16px;
+  --spacing-6: 24px;
+  --spacing-8: 32px;
+  --spacing-10: 40px;
+  --spacing-12: 48px;
+  --spacing-16: 64px;
+
+  --text-display-1: 48px;
+  --text-display-1--line-height: 56px;
+  --text-display-2: 36px;
+  --text-display-2--line-height: 44px;
+  --text-heading-1: 28px;
+  --text-heading-1--line-height: 36px;
+  --text-heading-2: 22px;
+  --text-heading-2--line-height: 30px;
+  --text-heading-3: 18px;
+  --text-heading-3--line-height: 26px;
+  --text-body-lg: 16px;
+  --text-body-lg--line-height: 24px;
+  --text-body: 14px;
+  --text-body--line-height: 20px;
+  --text-small: 12px;
+  --text-small--line-height: 16px;
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
 }

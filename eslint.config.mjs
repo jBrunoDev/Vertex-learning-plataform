@@ -12,6 +12,10 @@ const eslintConfig = defineConfig([
     "out/**",
     "build/**",
     "next-env.d.ts",
+    // Skill templates and reference apps are not part of the Vertex app:
+    ".agents/**",
+    "agent/**",
+    ".claude/**",
   ]),
 ]);
 
