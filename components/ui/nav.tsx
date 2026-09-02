@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { Bell } from "lucide-react";
 import { VertexLogo } from "@/components/icons/vertex-logo";
+import { NavAuth } from "@/components/ui/nav-auth";
 import { cn } from "@/lib/cn";
 
 export type NavLink = {
@@ -69,24 +70,7 @@ export function Nav({
           >
             <Bell className="size-5" strokeWidth={2} />
           </button>
-          <span
-            className="size-9 overflow-hidden rounded-full bg-neutral-200 ring-2 ring-white"
-            aria-hidden
-          >
-            {/* Soft portrait placeholder matching the home mock avatar chip */}
-            <svg viewBox="0 0 36 36" className="size-full" xmlns="http://www.w3.org/2000/svg">
-              <rect width="36" height="36" fill="#E8D5C4" />
-              <circle cx="18" cy="14" r="7" fill="#C4A484" />
-              <path
-                d="M6 34c1.5-8 6.5-12 12-12s10.5 4 12 12"
-                fill="#C4A484"
-              />
-              <path
-                d="M10 12c1-5 4-7 8-7s7 2 8 7c-2-1-5-1.5-8-1.5S12 11 10 12Z"
-                fill="#3F2A1D"
-              />
-            </svg>
-          </span>
+          <NavAuth />
         </div>
       ) : null}
     </header>
