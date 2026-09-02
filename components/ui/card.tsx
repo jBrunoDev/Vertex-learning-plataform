@@ -32,20 +32,26 @@ export function CourseCard({
   return (
     <article
       className={cn(
-        "flex h-full flex-col gap-4 rounded-lg border border-neutral-200 bg-white p-5 shadow-sm",
+        "flex h-full flex-col gap-4 rounded-lg border border-neutral-200 bg-white p-5 shadow-sm transition-[transform,box-shadow,border-color] duration-200",
         className,
       )}
     >
       <div
         className={cn(
-          "flex size-12 items-center justify-center overflow-hidden rounded-md text-body-lg font-bold text-white",
-          !icon && !iconSrc ? "bg-neutral-900" : "bg-transparent",
+          "relative flex size-12 shrink-0 items-center justify-center overflow-hidden rounded-md text-body-lg font-bold text-white",
+          !icon && !iconSrc ? "bg-neutral-900" : "bg-neutral-100",
         )}
       >
         {icon ? (
           icon
         ) : iconSrc ? (
-          <Image src={iconSrc} alt={iconAlt} width={48} height={48} />
+          <Image
+            src={iconSrc}
+            alt={iconAlt}
+            fill
+            sizes="48px"
+            className="object-cover"
+          />
         ) : (
           iconFallback
         )}

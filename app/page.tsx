@@ -1,12 +1,16 @@
 import Link from "next/link";
 import { ArrowRight, Star } from "lucide-react";
+import { CourseCardLink } from "@/components/course/course-card-link";
 import { HomeWave } from "@/components/home/home-wave";
-import { CourseCard } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Nav } from "@/components/ui/nav";
-import { homeCourses } from "@/lib/home-courses";
+import { pickHomeCourses } from "@/lib/home-featured-courses";
+import { getCourses } from "@/lib/sanity/fetch";
 
-export default function Home() {
+export default async function Home() {
+  const courses = await getCourses();
+  const featured = pickHomeCourses(courses, 3);
+
   return (
     <div className="relative flex min-h-full flex-1 flex-col overflow-hidden bg-neutral-50">
       <Nav className="relative z-10 border-b-0 bg-transparent px-4 sm:px-8 lg:px-16" />
@@ -62,17 +66,8 @@ export default function Home() {
           </div>
 
           <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3 lg:gap-8">
-            {homeCourses.map((course) => (
-              <CourseCard
-                key={course.title}
-                title={course.title}
-                description={course.description}
-                level={course.level}
-                duration={course.duration}
-                modules={course.modules}
-                icon={course.icon}
-                className="gap-6 p-6 sm:p-7"
-              />
+            {featured.map((course) => (
+              <CourseCardLink key={course._id} course={course} />
             ))}
           </div>
 

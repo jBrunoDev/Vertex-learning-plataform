@@ -18,12 +18,18 @@ export type SanityImageDto = {
 export function toImageDto(
   source: SanityImageSource | null | undefined,
   width: number,
+  height: number = width,
 ): SanityImageDto | null {
   if (!source || typeof source !== 'object' || !('asset' in source) || !source.asset) {
     return null
   }
 
-  const src = urlFor(source).width(width).fit('crop').auto('format').url()
+  const src = urlFor(source)
+    .width(width)
+    .height(height)
+    .fit('crop')
+    .auto('format')
+    .url()
   if (!src) return null
 
   const alt =
