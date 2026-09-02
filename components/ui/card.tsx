@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { type ReactNode } from "react";
 import { ArrowUpRight, Clock3, FileText, Layers, Signal } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { cn } from "@/lib/cn";
@@ -9,6 +10,7 @@ type CourseCardProps = {
   level: string;
   duration: string;
   modules: string;
+  icon?: ReactNode;
   iconSrc?: string;
   iconAlt?: string;
   iconFallback?: string;
@@ -21,6 +23,7 @@ export function CourseCard({
   level,
   duration,
   modules,
+  icon,
   iconSrc,
   iconAlt = "",
   iconFallback = "N",
@@ -29,13 +32,26 @@ export function CourseCard({
   return (
     <article
       className={cn(
-        "flex h-full flex-col gap-4 rounded-lg border border-neutral-200 bg-white p-5 shadow-sm",
+        "flex h-full flex-col gap-4 rounded-lg border border-neutral-200 bg-white p-5 shadow-sm transition-[transform,box-shadow,border-color] duration-200",
         className,
       )}
     >
-      <div className="flex size-12 items-center justify-center overflow-hidden rounded-md bg-neutral-900 text-body-lg font-bold text-white">
-        {iconSrc ? (
-          <Image src={iconSrc} alt={iconAlt} width={48} height={48} />
+      <div
+        className={cn(
+          "relative flex size-12 shrink-0 items-center justify-center overflow-hidden rounded-md text-body-lg font-bold text-white",
+          !icon && !iconSrc ? "bg-neutral-900" : "bg-neutral-100",
+        )}
+      >
+        {icon ? (
+          icon
+        ) : iconSrc ? (
+          <Image
+            src={iconSrc}
+            alt={iconAlt}
+            fill
+            sizes="48px"
+            className="object-cover"
+          />
         ) : (
           iconFallback
         )}
